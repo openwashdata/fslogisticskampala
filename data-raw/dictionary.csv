@@ -7,4 +7,4 @@
 "data","trips.rda","lon","numeric", "Longitude of the record."
 "data","trucks.rda","numberplate","character", "Numberplate of the truck, can be joined with `trips` resource."
 "data","trucks.rda","volume","numeric", "Volume of the truck in cubic meters."
-"data","trucks.rda","plant","character", "Treatment plant that the truck delivers faecal sludge to."
+"data","trips.rda","plant","character", "Treatment plant that the truck delivered faecal sludge to."

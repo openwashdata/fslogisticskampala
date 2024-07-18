@@ -32,14 +32,14 @@ add_period_after_two <- function(string) {
 
 trips <- data_in |>
   mutate(date = lubridate::dmy(date)) |>
-  select(fid, numberplate = numberplat, date, time, lat = latitude, lon =longitude) |>
+  select(fid, numberplate = numberplat, date, time, lat = latitude, lon =longitude, plant) |>
   mutate(lat= as.numeric(lat)) |>
   mutate(lon = as.character(lon)) |>
   mutate(lon = add_period_after_two(lon)) |>
   mutate(lon = as.numeric(lon))
 
 trucks <- data_in |>
-  select(numberplate = numberplat, volume, plant) |>
+  select(numberplate = numberplat, volume) |>
   unique()
 
 # Export Data ------------------------------------------------------------------
@@ -58,3 +58,5 @@ readr::write_csv(trucks,
 
 openxlsx::write.xlsx(trucks,
                      here::here("inst", "extdata", paste0("trucks", ".xlsx")))
+
+

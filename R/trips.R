@@ -3,7 +3,7 @@
 #' This dataset contains the GPS locations of faecal sludge trucks collecting sludge from pit latrines and septic tanks in Kampala, Uganda.
 #' Each trip is recorded with a unique identifier, the numberplate of the truck, the date and time of the record. Data was collected from 30th March 2015 until 25th June 2015.
 #'
-#' @format A tibble with 5653 rows and 6 variables
+#' @format A tibble with 5653 rows and 7 variables
 #' \describe{
 #'   \item{fid}{ Running ID for each recorded GPS location of a truck.}
 #'   \item{numberplate}{ Numberplate of the truck, can be joined with `trucks` resource.}
@@ -11,5 +11,6 @@
 #'   \item{time}{ Time of the record in hours, minutes, seconds.}
 #'   \item{lat}{ Latitude of the record.}
 #'   \item{lon}{ Longitude of the record.}
+#'   \item{plant}{ Treatment plant that the truck delivered faecal sludge to.}
 #' }
 "trips"
