@@ -28,7 +28,7 @@ knitr::opts_chunk$set(
 
 [![License: CC BY
 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-
+[![R-CMD-check](https://github.com/openwashdata/fslogisticskampala/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/openwashdata/fslogisticskampala/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of fslogisticskampala is to ...
@@ -83,7 +83,7 @@ library(fslogisticskampala)
 
 ### trips
 
-The dataset `trips` contains data about ...
+The dataset `trips` contains data about the GPS locations of faecal sludge trucks collecting sludge from pit latrines and septic tanks in Kampala, Uganda. Each trip is recorded with a unique identifier, the numberplate of the truck, the date and time of the record. Data was collected from 30th March 2015 until 25th June 2015.
 It has `r nrow(trips)` observations and `r ncol(trips)` variables
 
 ```{r}
@@ -104,6 +104,28 @@ readr::read_csv("data-raw/dictionary.csv") |>
   kableExtra::scroll_box(height = "200px")
 ```
 
+### trucks
+
+The dataset `trucks` contains data about ...
+It has `r nrow(trucks)` observations and `r ncol(trucks)` variables
+
+```{r}
+trucks |> 
+  head(3) |> 
+  gt::gt() |>
+  gt::as_raw_html()
+```
+
+For an overview of the variable names, see the following table.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+readr::read_csv("data-raw/dictionary.csv") |>
+  dplyr::filter(file_name == "trucks.rda") |>
+  dplyr::select(variable_name:description) |> 
+  knitr::kable() |> 
+  kableExtra::kable_styling("striped") |> 
+  kableExtra::scroll_box(height = "200px")
+```
 
 ## Example
 

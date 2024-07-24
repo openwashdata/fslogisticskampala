@@ -1,0 +1,44 @@
+# --------------------------------------------
+# CITATION file created with {cffr} R package
+# See also: https://docs.ropensci.org/cffr/
+# --------------------------------------------
+ 
+cff-version: 1.2.0
+message: 'To cite package "fslogisticskampala" in publications use:'
+type: software
+license: CC-BY-4.0
+title: 'fslogisticskampala: Data on faecal sludge transporting logistics in Kampala,
+  Uganda'
+version: 0.0.0.9000
+abstract: This package contains two data resources. `trips` contains the GPS locations
+  of faecal sludge emptying trucks collecting sludge from pit latrines and septic
+  tanks in Kampala, Uganda. Each trip is recorded with a unique identifier, the numberplate
+  of the truck, the date and time of the record. Data was collected from 30th March
+  2015 until 25th June 2015. `trucks` has additional information on the volume of
+  each truck.
+authors:
+- family-names: Schöbitz
+  given-names: Lars
+  email: lars@lse.de
+  orcid: https://orcid.org/0000-0003-2196-5015
+repository-code: https://github.com/openwashdata/fslogisticskampala
+url: https://github.com/openwashdata/fslogisticskampala
+date-released: '2024-07-18'
+contact:
+- family-names: Schöbitz
+  given-names: Lars
+  email: lars@lse.de
+  orcid: https://orcid.org/0000-0003-2196-5015
+references:
+- type: software
+  title: 'R: A Language and Environment for Statistical Computing'
+  notes: Depends
+  url: https://www.R-project.org/
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
+  version: '>= 2.10'
+
