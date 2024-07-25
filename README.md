@@ -7,10 +7,12 @@
 
 [![License: CC BY
 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-
+[![R-CMD-check](https://github.com/openwashdata/fslogisticskampala/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/openwashdata/fslogisticskampala/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of fslogisticskampala is to …
+The goal of fslogisticskampala is to provide data sources on faecal
+sludge transporting logistics in Kampala, Uganda collected from 30th
+March 2015 until 25th June 2015.
 
 ## Installation
 
@@ -43,7 +45,7 @@ file from the table below.
 
 ## Data
 
-The package provides access to …
+The package provides access to two datasets `trips` and `trucks`.
 
 ``` r
 library(fslogisticskampala)
@@ -51,8 +53,12 @@ library(fslogisticskampala)
 
 ### trips
 
-The dataset `trips` contains data about … It has 5653 observations and 7
-variables
+The dataset `trips` contains data about the GPS locations of faecal
+sludge trucks collecting sludge from pit latrines and septic tanks in
+Kampala, Uganda. Each trip is recorded with a unique identifier, the
+numberplate of the truck, the date and time of the record. Data was
+collected from 30th March 2015 until 25th June 2015. It has 5653
+observations and 7 variables
 
 ``` r
 trips |> 
@@ -61,7 +67,7 @@ trips |>
   gt::as_raw_html()
 ```
 
-<div id="csjhbxxlum" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="asxvjzpyld" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   &#10;  <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
   <thead style="border-style: none;">
     <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -105,7 +111,7 @@ For an overview of the variable names, see the following table.
 
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; ">
 
-<table class="table table-striped" style="color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
@@ -202,11 +208,108 @@ Treatment plant that the truck delivered faecal sludge to.
 
 </div>
 
+### trucks
+
+The dataset `trucks` contains data about additional information on the
+volume of each truck used in the dataset `trips`. It has 35 observations
+and 2 variables
+
+``` r
+trucks |> 
+  head(3) |> 
+  gt::gt() |>
+  gt::as_raw_html()
+```
+
+<div id="kixvnviszn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+  &#10;  <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
+  <thead style="border-style: none;">
+    <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="numberplate" style="border-style: none; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 6px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; text-align: left;" bgcolor="#FFFFFF" valign="bottom" align="left">numberplate</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="volume" style="border-style: none; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 6px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;" bgcolor="#FFFFFF" valign="bottom" align="right">volume</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3;">
+    <tr style="border-style: none;"><td headers="numberplate" class="gt_row gt_left" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;" valign="middle" align="left">AUS 119X</td>
+<td headers="volume" class="gt_row gt_right" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;" valign="middle" align="right">3</td></tr>
+    <tr style="border-style: none;"><td headers="numberplate" class="gt_row gt_left" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;" valign="middle" align="left">UAG 448X</td>
+<td headers="volume" class="gt_row gt_right" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;" valign="middle" align="right">35</td></tr>
+    <tr style="border-style: none;"><td headers="numberplate" class="gt_row gt_left" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;" valign="middle" align="left">UAN 030N</td>
+<td headers="volume" class="gt_row gt_right" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;" valign="middle" align="right">3</td></tr>
+  </tbody>
+  &#10;  
+</table>
+</div>
+
+For an overview of the variable names, see the following table.
+
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; ">
+
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+variable_name
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+variable_type
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+numberplate
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+Numberplate of the truck, can be joined with `trips` resource.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volume
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+Volume of the truck in cubic meters.
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
 ## Example
 
 ``` r
 library(fslogisticskampala)
+library(ggplot2)
+library(lubridate)
 
+aus <- trips |>
+  dplyr::filter(numberplate == "AUS 119X") |>
+  dplyr::filter(date < ymd("2015-04-06"))
+
+ggplot(aus, aes(x = lon, y = lat, color = date)) +
+  geom_point() +
+  labs(title = "GPS Locations of Faecal Sludge Trucks",
+       x = "Longitude",
+       y = "Latitude",
+       color = "Treatment Plant") +
+  theme_minimal()
+```
+
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" />
+
+``` r
 # Provide some example code here
 ```
 

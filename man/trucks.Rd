@@ -15,6 +15,6 @@ A tibble with 35 rows and 2 variables
 trucks
 }
 \description{
-trucks: Faecal sludge emptying trucks
+Additional information on the volume of each truck used in the dataset \code{trips}.
 }
 \keyword{datasets}

@@ -31,7 +31,7 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/openwashdata/fslogisticskampala/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/openwashdata/fslogisticskampala/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of fslogisticskampala is to ...
+The goal of fslogisticskampala is to provide data sources on faecal sludge transporting logistics in Kampala, Uganda collected from 30th March 2015 until 25th June 2015. 
 
 ## Installation
 
@@ -75,7 +75,7 @@ read_csv("data-raw/dictionary.csv") |>
 
 ## Data
 
-The package provides access to ...
+The package provides access to two datasets `trips` and `trucks`. 
 
 ```{r}
 library(fslogisticskampala)
@@ -106,7 +106,7 @@ readr::read_csv("data-raw/dictionary.csv") |>
 
 ### trucks
 
-The dataset `trucks` contains data about ...
+The dataset `trucks` contains data about additional information on the volume of each truck used in the dataset `trips`.
 It has `r nrow(trucks)` observations and `r ncol(trucks)` variables
 
 ```{r}
@@ -131,7 +131,20 @@ readr::read_csv("data-raw/dictionary.csv") |>
 
 ```{r}
 library(fslogisticskampala)
+library(ggplot2)
+library(lubridate)
 
+aus <- trips |>
+  dplyr::filter(numberplate == "AUS 119X") |>
+  dplyr::filter(date < ymd("2015-04-06"))
+
+ggplot(aus, aes(x = lon, y = lat, color = date)) +
+  geom_point() +
+  labs(title = "GPS Locations of Faecal Sludge Trucks",
+       x = "Longitude",
+       y = "Latitude",
+       color = "Treatment Plant") +
+  theme_minimal()
 # Provide some example code here
 ```
 

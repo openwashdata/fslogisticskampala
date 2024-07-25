@@ -1,6 +1,6 @@
 #' trucks: Faecal sludge emptying trucks
 #'
-#'
+#' Additional information on the volume of each truck used in the dataset `trips`.
 #'
 #' @format A tibble with 35 rows and 2 variables
 #' \describe{
