@@ -1,9 +1,11 @@
 Package: fslogisticskampala
 Title: Data on faecal sludge transporting logistics in Kampala, Uganda
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R: c(
     person("Lars", "Schöbitz", , "lars@lse.de", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0003-2196-5015"))
+           comment = c(ORCID = "0000-0003-2196-5015")),
+    person("Jos", "van der Ent", role = "ctb",
+           comment = c(ORCID = "0009-0009-3940-3943")))
 Description: 
     This package contains two data resources. `trips` contains the GPS locations 
     of faecal sludge emptying trucks collecting sludge from pit latrines and 
@@ -19,6 +21,13 @@ Depends:
     R (>= 2.10)
 LazyData: true
 Language: en-GB
+Suggests:
+    knitr,
+    rmarkdown,
+    leaflet,
+    ggplot2,
+    lubridate
+VignetteBuilder: knitr
 Config/Needs/website: rmarkdown, leaflet, htmlwidgets, webshot2
 Date: 2024-07-18
 URL: https://github.com/openwashdata/fslogisticskampala
