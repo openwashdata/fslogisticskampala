@@ -13,7 +13,7 @@ editor_options:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/1README-",
+  fig.path = "man/figures/README-",
   out.width = "100%",
   message = FALSE,
   warning = FALSE,
@@ -38,14 +38,14 @@ The goal of fslogisticskampala is to provide data sources on faecal sludge trans
 You can install the development version of fslogisticskampala from
 [GitHub](https://github.com/) with:
 
-```{r}
+``` r
 # install.packages("devtools")
 devtools::install_github("openwashdata/fslogisticskampala")
 ```
 
 ```{r}
 ## Run the following code in console if you don't have the packages
-## install.packages(c("dplyr", "knitr", "readr", "stringr", "gt", "kableExtra". "leaflet"))
+## install.packages(c("dplyr", "knitr", "readr", "stringr", "gt", "kableExtra", "leaflet"))
 library(dplyr)
 library(knitr)
 library(readr)
@@ -149,23 +149,37 @@ ggplot(aus, aes(x = lon, y = lat, color = date)) +
 ```
 
 ## Example 2
-An interactive map of all collection points
+
+A map of all collection points (red) and the existing treatment plants.
+The code below builds an interactive `leaflet` map. On the package website
+the map is interactive; in this README it is shown as a static screenshot,
+because GitHub does not render JavaScript widgets in Markdown.
+
 ```{r}
-#| label: fig-map_collection_locations
-#| fig-cap: "Map with collection locations and the existing treatment plants"
-map = leaflet(data = trips) |>
-   addTiles() |>
-   addCircleMarkers(~lon, ~lat 
-                    ,popup = ~as.character(plant)
-                    , color = ~ifelse(plant == "Bugolobi" , "red", "blue")
-                    , radius = 0.5
-                    ) |>
-  addMarkers(lng = ~c(32.6071673,32.5458844)
-             ,lat = ~c(0.3190139,0.3472747)
-             ,popup = ~c("Bugolobi FS treatment plant","Lubigi FS treatment plant")
-             )
-map
+map <- leaflet(data = trips) |>
+  addTiles() |>
+  addCircleMarkers(
+    ~lon, ~lat,
+    popup = ~as.character(plant),
+    color = ~ifelse(plant == "Bugolobi", "red", "blue"),
+    radius = 0.5
+  ) |>
+  addMarkers(
+    lng = ~c(32.6071673, 32.5458844),
+    lat = ~c(0.3190139, 0.3472747),
+    popup = ~c("Bugolobi FS treatment plant", "Lubigi FS treatment plant")
+  )
 ```
+
+```{r map-screenshot, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+# Render a static screenshot of the interactive map for the GitHub README.
+html_file <- tempfile(fileext = ".html")
+png_file <- "man/figures/README-map-collection-locations.png"
+htmlwidgets::saveWidget(map, html_file, selfcontained = TRUE)
+invisible(webshot2::webshot(html_file, file = png_file, vwidth = 992, vheight = 600, delay = 2))
+```
+
+![Map with collection locations and the existing treatment plants](man/figures/README-map-collection-locations.png)
 
 ## License
 
