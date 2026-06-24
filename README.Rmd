@@ -45,13 +45,14 @@ devtools::install_github("openwashdata/fslogisticskampala")
 
 ```{r}
 ## Run the following code in console if you don't have the packages
-## install.packages(c("dplyr", "knitr", "readr", "stringr", "gt", "kableExtra"))
+## install.packages(c("dplyr", "knitr", "readr", "stringr", "gt", "kableExtra", "leaflet"))
 library(dplyr)
 library(knitr)
 library(readr)
 library(stringr)
 library(gt)
 library(kableExtra)
+library(leaflet)
 ```
 
 Alternatively, you can download the individual datasets as a CSV or XLSX
@@ -127,8 +128,8 @@ readr::read_csv("data-raw/dictionary.csv") |>
   kableExtra::scroll_box(height = "200px")
 ```
 
-## Example
-
+## Example 1
+A plot showing the collection locations of the truck with number plate "AUS 119X"
 ```{r}
 library(fslogisticskampala)
 library(ggplot2)
@@ -145,9 +146,40 @@ ggplot(aus, aes(x = lon, y = lat, color = date)) +
        y = "Latitude",
        color = "Treatment Plant") +
   theme_minimal()
-# Provide some example code here
 ```
 
+## Example 2
+
+A map of all collection points (red) and the existing treatment plants.
+The code below builds an interactive `leaflet` map. On the package website
+the map is interactive; in this README it is shown as a static screenshot,
+because GitHub does not render JavaScript widgets in Markdown.
+
+```{r}
+map <- leaflet(data = trips) |>
+  addTiles() |>
+  addCircleMarkers(
+    ~lon, ~lat,
+    popup = ~as.character(plant),
+    color = ~ifelse(plant == "Bugolobi", "red", "blue"),
+    radius = 0.5
+  ) |>
+  addMarkers(
+    lng = ~c(32.6071673, 32.5458844),
+    lat = ~c(0.3190139, 0.3472747),
+    popup = ~c("Bugolobi FS treatment plant", "Lubigi FS treatment plant")
+  )
+```
+
+```{r map-screenshot, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+# Render a static screenshot of the interactive map for the GitHub README.
+html_file <- tempfile(fileext = ".html")
+png_file <- "man/figures/README-map-collection-locations.png"
+htmlwidgets::saveWidget(map, html_file, selfcontained = TRUE)
+invisible(webshot2::webshot(html_file, file = png_file, vwidth = 992, vheight = 600, delay = 2))
+```
+
+![Map with collection locations and the existing treatment plants](man/figures/README-map-collection-locations.png)
 
 ## License
 

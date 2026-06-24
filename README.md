@@ -26,22 +26,23 @@ devtools::install_github("openwashdata/fslogisticskampala")
 
 ``` r
 ## Run the following code in console if you don't have the packages
-## install.packages(c("dplyr", "knitr", "readr", "stringr", "gt", "kableExtra"))
+## install.packages(c("dplyr", "knitr", "readr", "stringr", "gt", "kableExtra", "leaflet"))
 library(dplyr)
 library(knitr)
 library(readr)
 library(stringr)
 library(gt)
 library(kableExtra)
+library(leaflet)
 ```
 
 Alternatively, you can download the individual datasets as a CSV or XLSX
 file from the table below.
 
-| dataset | CSV                                                                                                 | XLSX                                                                                                  |
-|:--------|:----------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------|
-| trips   | [Download CSV](https://github.com/openwashdata/fslogisticskampala/raw/main/inst/extdata/trips.csv)  | [Download XLSX](https://github.com/openwashdata/fslogisticskampala/raw/main/inst/extdata/trips.xlsx)  |
-| trucks  | [Download CSV](https://github.com/openwashdata/fslogisticskampala/raw/main/inst/extdata/trucks.csv) | [Download XLSX](https://github.com/openwashdata/fslogisticskampala/raw/main/inst/extdata/trucks.xlsx) |
+| dataset | CSV | XLSX |
+|:---|:---|:---|
+| trips | [Download CSV](https://github.com/openwashdata/fslogisticskampala/raw/main/inst/extdata/trips.csv) | [Download XLSX](https://github.com/openwashdata/fslogisticskampala/raw/main/inst/extdata/trips.xlsx) |
+| trucks | [Download CSV](https://github.com/openwashdata/fslogisticskampala/raw/main/inst/extdata/trucks.csv) | [Download XLSX](https://github.com/openwashdata/fslogisticskampala/raw/main/inst/extdata/trucks.xlsx) |
 
 ## Data
 
@@ -67,7 +68,7 @@ trips |>
   gt::as_raw_html()
 ```
 
-<div id="asxvjzpyld" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="luhiqwqlsq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   &#10;  <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
   <thead style="border-style: none;">
     <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -103,8 +104,7 @@ trips |>
 <td headers="lon" class="gt_row gt_right" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;" valign="middle" align="right">32.56255</td>
 <td headers="plant" class="gt_row gt_left" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;" valign="middle" align="left">Bugolobi</td></tr>
   </tbody>
-  &#10;  
-</table>
+  &#10;</table>
 </div>
 
 For an overview of the variable names, see the following table.
@@ -112,98 +112,167 @@ For an overview of the variable names, see the following table.
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; ">
 
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+
 <thead>
+
 <tr>
+
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+
 variable_name
 </th>
+
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+
 variable_type
 </th>
+
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+
 description
 </th>
+
 </tr>
+
 </thead>
+
 <tbody>
+
 <tr>
+
 <td style="text-align:left;">
+
 fid
 </td>
+
 <td style="text-align:left;">
+
 numeric
 </td>
+
 <td style="text-align:left;">
+
 Running ID for each recorded GPS location of a truck.
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 numberplate
 </td>
+
 <td style="text-align:left;">
+
 character
 </td>
+
 <td style="text-align:left;">
+
 Numberplate of the truck, can be joined with `trucks` resource.
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 date
 </td>
+
 <td style="text-align:left;">
+
 Date
 </td>
+
 <td style="text-align:left;">
+
 Date of the record in ISO 8601 format.
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 time
 </td>
+
 <td style="text-align:left;">
+
 c(“hms”, “difftime”)
 </td>
+
 <td style="text-align:left;">
+
 Time of the record in hours, minutes, seconds.
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 lat
 </td>
+
 <td style="text-align:left;">
+
 numeric
 </td>
+
 <td style="text-align:left;">
+
 Latitude of the record.
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 lon
 </td>
+
 <td style="text-align:left;">
+
 numeric
 </td>
+
 <td style="text-align:left;">
+
 Longitude of the record.
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 plant
 </td>
+
 <td style="text-align:left;">
+
 character
 </td>
+
 <td style="text-align:left;">
+
 Treatment plant that the truck delivered faecal sludge to.
 </td>
+
 </tr>
+
 </tbody>
+
 </table>
 
 </div>
@@ -221,7 +290,7 @@ trucks |>
   gt::as_raw_html()
 ```
 
-<div id="kixvnviszn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="vzucjcggie" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   &#10;  <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
   <thead style="border-style: none;">
     <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -237,8 +306,7 @@ trucks |>
     <tr style="border-style: none;"><td headers="numberplate" class="gt_row gt_left" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;" valign="middle" align="left">UAN 030N</td>
 <td headers="volume" class="gt_row gt_right" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: right; font-variant-numeric: tabular-nums;" valign="middle" align="right">3</td></tr>
   </tbody>
-  &#10;  
-</table>
+  &#10;</table>
 </div>
 
 For an overview of the variable names, see the following table.
@@ -246,48 +314,80 @@ For an overview of the variable names, see the following table.
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; ">
 
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+
 <thead>
+
 <tr>
+
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+
 variable_name
 </th>
+
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+
 variable_type
 </th>
+
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+
 description
 </th>
+
 </tr>
+
 </thead>
+
 <tbody>
+
 <tr>
+
 <td style="text-align:left;">
+
 numberplate
 </td>
+
 <td style="text-align:left;">
+
 character
 </td>
+
 <td style="text-align:left;">
+
 Numberplate of the truck, can be joined with `trips` resource.
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:left;">
+
 volume
 </td>
+
 <td style="text-align:left;">
+
 numeric
 </td>
+
 <td style="text-align:left;">
+
 Volume of the truck in cubic meters.
 </td>
+
 </tr>
+
 </tbody>
+
 </table>
 
 </div>
 
-## Example
+## Example 1
+
+A plot showing the collection locations of the truck with number plate
+“AUS 119X”
 
 ``` r
 library(fslogisticskampala)
@@ -307,11 +407,38 @@ ggplot(aus, aes(x = lon, y = lat, color = date)) +
   theme_minimal()
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="man/figures/README-unnamed-chunk-9-1.png" alt="" width="100%" style="display: block; margin: auto;" />
+
+## Example 2
+
+A map of all collection points (red) and the existing treatment plants.
+The code below builds an interactive `leaflet` map. On the package
+website the map is interactive; in this README it is shown as a static
+screenshot, because GitHub does not render JavaScript widgets in
+Markdown.
 
 ``` r
-# Provide some example code here
+map <- leaflet(data = trips) |>
+  addTiles() |>
+  addCircleMarkers(
+    ~lon, ~lat,
+    popup = ~as.character(plant),
+    color = ~ifelse(plant == "Bugolobi", "red", "blue"),
+    radius = 0.5
+  ) |>
+  addMarkers(
+    lng = ~c(32.6071673, 32.5458844),
+    lat = ~c(0.3190139, 0.3472747),
+    popup = ~c("Bugolobi FS treatment plant", "Lubigi FS treatment plant")
+  )
 ```
+
+<figure>
+<img src="man/figures/README-map-collection-locations.png"
+alt="Map with collection locations and the existing treatment plants" />
+<figcaption aria-hidden="true">Map with collection locations and the
+existing treatment plants</figcaption>
+</figure>
 
 ## License
 
