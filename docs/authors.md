@@ -5,6 +5,9 @@
 - **Lars Schöbitz**. Author, maintainer.
   [](https://orcid.org/0000-0003-2196-5015)
 
+- **Jos van der Ent**. Contributor.
+  [](https://orcid.org/0009-0009-3940-3943)
+
 ## Citation
 
 Source:

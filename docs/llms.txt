@@ -135,11 +135,13 @@ ggplot(aus, aes(x = lon, y = lat, color = date)) +
 
 ## Example 2
 
-A map of all collection points (red) and the existing treatment plants.
-The code below builds an interactive `leaflet` map. On the package
-website the map is interactive; in this README it is shown as a static
-screenshot, because GitHub does not render JavaScript widgets in
-Markdown.
+A map of all collection points (red and blue) and the existing treatment
+plants. The map below is shown as a static image, because GitHub does
+not render interactive JavaScript widgets in Markdown. For the fully
+interactive version (pan, zoom, click), see the article [Interactive map
+of collection
+locations](https://openwashdata.github.io/fslogisticskampala/articles/collection-locations-map.html)
+on the package website.
 
 ``` r
 
@@ -162,6 +164,10 @@ map <- leaflet(data = trips) |>
 plants](reference/figures/README-map-collection-locations.png)
 
 Map with collection locations and the existing treatment plants
+
+The interactive map was contributed by Jos van der Ent as part of a
+[capstone project](https://github.com/ds4owd-002/project-yozgoesdigital)
+for the Data Science for Open WASH Data course.
 
 ## License
 
@@ -201,3 +207,9 @@ citation("fslogisticskampala")
 - [`trucks`](https://github.com/openwashdata/fslogisticskampala/reference/trucks.md)
   : trucks: Faecal sludge emptying trucks
 
+# Articles
+
+### All vignettes
+
+- [Interactive map of collection
+  locations](https://github.com/openwashdata/fslogisticskampala/articles/collection-locations-map.md):
