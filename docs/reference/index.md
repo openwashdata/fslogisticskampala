@@ -1,8 +1,10 @@
 # Package index
 
-## All functions
+## Data
 
-- [`trips`](https://github.com/openwashdata/fslogisticskampala/reference/trips.md)
+Access the fslogisticskampala datasets
+
+- [`trips`](https://openwashdata.github.io/fslogisticskampala/reference/trips.md)
   : trips: Trips of faecal sludge trucks
-- [`trucks`](https://github.com/openwashdata/fslogisticskampala/reference/trucks.md)
+- [`trucks`](https://openwashdata.github.io/fslogisticskampala/reference/trucks.md)
   : trucks: Faecal sludge emptying trucks

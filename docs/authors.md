@@ -11,16 +11,17 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/openwashdata/fslogisticskampala/blob/HEAD/DESCRIPTION)
+[`inst/CITATION`](https://github.com/openwashdata/fslogisticskampala/blob/HEAD/inst/CITATION)
 
-Schöbitz L (2026). *fslogisticskampala: Data on faecal sludge
-transporting logistics in Kampala, Uganda*. R package version
-0.0.0.9000, <https://github.com/openwashdata/fslogisticskampala>.
+Schöbitz L (2026). “fslogisticskampala: Data on Faecal Sludge
+Transporting Logistics in Kampala, Uganda.”
+<https://github.com/openwashdata/fslogisticskampala>.
 
-    @Manual{,
-      title = {fslogisticskampala: Data on faecal sludge transporting logistics in Kampala, Uganda},
+    @Misc{schobitz:2026,
+      title = {fslogisticskampala: Data on Faecal Sludge Transporting Logistics in Kampala, Uganda},
       author = {Lars Schöbitz},
       year = {2026},
-      note = {R package version 0.0.0.9000},
       url = {https://github.com/openwashdata/fslogisticskampala},
+      abstract = {Contains two data resources. `trips` contains the GPS locations of faecal sludge emptying trucks collecting sludge from pit latrines and septic tanks in Kampala, Uganda. Each trip is recorded with a unique identifier, the numberplate of the truck, the date and time of the record. Data was collected from 30th March 2015 until 25th June 2015. `trucks` has additional information on the volume of each truck.},
+      version = {0.0.0.9000},
     }

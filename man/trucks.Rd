@@ -5,7 +5,7 @@
 \alias{trucks}
 \title{trucks: Faecal sludge emptying trucks}
 \format{
-A tibble with 35 rows and 2 variables
+A tibble with 33 rows and 2 variables
 \describe{
 \item{numberplate}{ Numberplate of the truck, can be joined with \code{trips} resource.}
 \item{volume}{ Volume of the truck in cubic meters.}
@@ -16,5 +16,12 @@ trucks
 }
 \description{
 Additional information on the volume of each truck used in the dataset \code{trips}.
+}
+\examples{
+head(trucks)
+
+# Join truck volumes onto the trips they made
+merge(trips, trucks, by = "numberplate") |>
+  head()
 }
 \keyword{datasets}

@@ -11,3 +11,6 @@
 ^fslogisticskampala\.Rcheck$
 ^fslogisticskampala.*\.tar\.gz$
 ^fslogisticskampala.*\.tgz$
+^CLAUDE\.md$
+^analysis$
+^vignettes/articles$
