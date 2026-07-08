@@ -2,7 +2,8 @@
 # R script to process uploaded raw data into a tidy, analysis-ready data frame
 # Load packages ----------------------------------------------------------------
 ## Run the following code in console if you don't have the packages
-## install.packages(c("usethis", "fs", "here", "readr", "readxl", "openxlsx"))
+## install.packages(c("usethis", "fs", "here", "readr", "readxl", "openxlsx",
+##                    "dplyr", "janitor", "lubridate"))
 library(usethis)
 library(fs)
 library(here)
@@ -12,35 +13,26 @@ library(openxlsx)
 library(dplyr)
 
 # Read data --------------------------------------------------------------------
+# The .xls supplement stores each record as a single semicolon-separated
+# string, so the sheet reads as one column. Keep a plain-text copy of it,
+# then parse the semicolon-separated values with a period decimal mark.
 readxl::read_excel("data-raw/sustainability-09-00194-s001.xls") |>
   write_csv("data-raw/sustainability-09-00194-s001.csv")
 
-data_in <- read_csv2("data-raw/sustainability-09-00194-s001.csv") |>
+data_in <- read_delim("data-raw/sustainability-09-00194-s001.csv",
+                      delim = ";") |>
   janitor::clean_names()
-
-# codebook <- readxl::read_excel("data-raw/codebook.xlsx") |>
-#  clean_names()
-
-library(stringr)
-
-add_period_after_two <- function(string) {
-  str_c(str_sub(string, 1, 2), ".", str_sub(string, 3))
-}
-
 
 # Tidy data --------------------------------------------------------------------
 
 trips <- data_in |>
   mutate(date = lubridate::dmy(date)) |>
-  select(fid, numberplate = numberplat, date, time, lat = latitude, lon =longitude, plant) |>
-  mutate(lat= as.numeric(lat)) |>
-  mutate(lon = as.character(lon)) |>
-  mutate(lon = add_period_after_two(lon)) |>
-  mutate(lon = as.numeric(lon))
+  select(fid, numberplate = numberplat, date, time,
+         lat = latitude, lon = longitude, plant)
 
 trucks <- data_in |>
   select(numberplate = numberplat, volume) |>
-  unique()
+  distinct()
 
 # Export Data ------------------------------------------------------------------
 usethis::use_data(trips, trucks, overwrite = TRUE)
@@ -48,15 +40,13 @@ usethis::use_data(trips, trucks, overwrite = TRUE)
 fs::dir_create(here::here("inst", "extdata"))
 
 readr::write_csv(trips,
-                 here::here("inst", "extdata", paste0("trips", ".csv")))
+                 here::here("inst", "extdata", "trips.csv"))
 
 openxlsx::write.xlsx(trips,
-                     here::here("inst", "extdata", paste0("trips", ".xlsx")))
+                     here::here("inst", "extdata", "trips.xlsx"))
 
 readr::write_csv(trucks,
-                 here::here("inst", "extdata", paste0("trucks", ".csv")))
+                 here::here("inst", "extdata", "trucks.csv"))
 
 openxlsx::write.xlsx(trucks,
-                     here::here("inst", "extdata", paste0("trucks", ".xlsx")))
-
-
+                     here::here("inst", "extdata", "trucks.xlsx"))
