@@ -9,7 +9,7 @@ type: software
 license: CC-BY-4.0
 title: 'fslogisticskampala: Data on Faecal Sludge Transporting Logistics in Kampala,
   Uganda'
-version: 0.0.0.9000
+version: 1.0.0
 abstract: Contains two data resources. `trips` contains the GPS locations of faecal
   sludge emptying trucks collecting sludge from pit latrines and septic tanks in Kampala,
   Uganda. Each trip is recorded with a unique identifier, the numberplate of the truck,
