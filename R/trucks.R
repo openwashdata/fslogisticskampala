@@ -7,4 +7,10 @@
 #'   \item{numberplate}{ Numberplate of the truck, can be joined with `trips` resource.}
 #'   \item{volume}{ Volume of the truck in cubic meters.}
 #' }
+#' @examples
+#' head(trucks)
+#'
+#' # Join truck volumes onto the trips they made
+#' merge(trips, trucks, by = "numberplate") |>
+#'   head()
 "trucks"

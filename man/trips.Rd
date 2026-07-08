@@ -23,4 +23,10 @@ trips
 This dataset contains the GPS locations of faecal sludge trucks collecting sludge from pit latrines and septic tanks in Kampala, Uganda.
 Each trip is recorded with a unique identifier, the numberplate of the truck, the date and time of the record. Data was collected from 30th March 2015 until 25th June 2015.
 }
+\examples{
+head(trips)
+
+# Number of recorded trips per treatment plant
+table(trips$plant)
+}
 \keyword{datasets}

@@ -13,4 +13,9 @@
 #'   \item{lon}{ Longitude of the record.}
 #'   \item{plant}{ Treatment plant that the truck delivered faecal sludge to.}
 #' }
+#' @examples
+#' head(trips)
+#'
+#' # Number of recorded trips per treatment plant
+#' table(trips$plant)
 "trips"
