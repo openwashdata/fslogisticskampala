@@ -3,7 +3,7 @@
 # Load packages ----------------------------------------------------------------
 ## Run the following code in console if you don't have the packages
 ## install.packages(c("usethis", "fs", "here", "readr", "readxl", "openxlsx",
-##                    "dplyr", "janitor", "lubridate"))
+##                    "dplyr", "janitor", "lubridate", "stringr"))
 library(usethis)
 library(fs)
 library(here)
@@ -24,14 +24,22 @@ data_in <- read_delim("data-raw/sustainability-09-00194-s001.csv",
   janitor::clean_names()
 
 # Tidy data --------------------------------------------------------------------
+# Ugandan numberplates start with U; the raw data records three plates with a
+# transposed "AUS" prefix ("AUS 088V", "AUS 892G", "AUS 119X") alongside their
+# "UAS" counterparts carrying identical truck volumes. Recode them as "UAS".
 
 trips <- data_in |>
   mutate(date = lubridate::dmy(date)) |>
   select(fid, numberplate = numberplat, date, time,
-         lat = latitude, lon = longitude, plant)
+         lat = latitude, lon = longitude, plant) |>
+  mutate(
+    fid = as.integer(fid),
+    numberplate = stringr::str_replace(numberplate, "^AUS ", "UAS ")
+  )
 
 trucks <- data_in |>
   select(numberplate = numberplat, volume) |>
+  mutate(numberplate = stringr::str_replace(numberplate, "^AUS ", "UAS ")) |>
   distinct()
 
 # Export Data ------------------------------------------------------------------
