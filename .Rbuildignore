@@ -12,3 +12,4 @@
 ^fslogisticskampala.*\.tar\.gz$
 ^fslogisticskampala.*\.tgz$
 ^CLAUDE\.md$
+^analysis$
