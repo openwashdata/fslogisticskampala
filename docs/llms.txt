@@ -1,8 +1,13 @@
 # fslogisticskampala
 
-The goal of fslogisticskampala is to provide data sources on faecal
-sludge transporting logistics in Kampala, Uganda collected from 30th
-March 2015 until 25th June 2015.
+The goal of fslogisticskampala is to provide data on faecal sludge
+transporting logistics in Kampala, Uganda. The package contains two
+datasets: `trips` records the GPS locations of emptying trucks
+collecting sludge from pit latrines and septic tanks, and `trucks`
+records the volume of each truck. The records cover the period from 30th
+March 2015 until 25th June 2015. The raw data was published as
+supplementary material of an open-access article in the journal
+Sustainability (MDPI).
 
 ## Installation
 
@@ -109,8 +114,9 @@ For an overview of the variable names, see the following table.
 
 ## Example 1
 
-A plot showing the collection locations of the truck with number plate
-“UAS 119X”
+The figure below (chunk `plot-collection-locations`) shows the
+collection locations of the truck with number plate “UAS 119X” during
+the first week of data collection, coloured by collection date.
 
 ``` r
 
@@ -124,22 +130,24 @@ uas <- trips |>
 
 ggplot(uas, aes(x = lon, y = lat, color = date)) +
   geom_point() +
-  labs(title = "GPS Locations of Faecal Sludge Trucks",
+  labs(title = "Collection locations of truck UAS 119X",
+       subtitle = "30th March to 5th April 2015",
        x = "Longitude",
        y = "Latitude",
-       color = "Treatment Plant") +
+       color = "Date") +
   theme_minimal()
 ```
 
-![](reference/figures/README-unnamed-chunk-9-1.png)
+![](reference/figures/README-plot-collection-locations-1.png)
 
 ## Example 2
 
-A map of all collection points (red and blue) and the existing treatment
-plants. The map below is shown as a static image, because GitHub does
-not render interactive JavaScript widgets in Markdown. For the fully
-interactive version (pan, zoom, click), see the article [Interactive map
-of collection
+The map below (chunks `build-map` and `map-screenshot`) shows all
+collection points, coloured red for Bugolobi and blue for Lubigi,
+together with markers for the two treatment plants. It is shown as a
+static image, because GitHub does not render interactive JavaScript
+widgets in Markdown. For the fully interactive version (pan, zoom,
+click), see the article [Interactive map of collection
 locations](https://openwashdata.github.io/fslogisticskampala/articles/collection-locations-map.html)
 on the package website.
 
@@ -201,11 +209,13 @@ citation("fslogisticskampala")
 
 # Package index
 
-## All functions
+## Data
 
-- [`trips`](https://github.com/openwashdata/fslogisticskampala/reference/trips.md)
+Access the fslogisticskampala datasets
+
+- [`trips`](https://openwashdata.github.io/fslogisticskampala/reference/trips.md)
   : trips: Trips of faecal sludge trucks
-- [`trucks`](https://github.com/openwashdata/fslogisticskampala/reference/trucks.md)
+- [`trucks`](https://openwashdata.github.io/fslogisticskampala/reference/trucks.md)
   : trucks: Faecal sludge emptying trucks
 
 # Articles
@@ -213,4 +223,4 @@ citation("fslogisticskampala")
 ### All vignettes
 
 - [Interactive map of collection
-  locations](https://github.com/openwashdata/fslogisticskampala/articles/collection-locations-map.md):
+  locations](https://openwashdata.github.io/fslogisticskampala/articles/collection-locations-map.md):
