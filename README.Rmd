@@ -129,17 +129,17 @@ readr::read_csv("data-raw/dictionary.csv") |>
 ```
 
 ## Example 1
-A plot showing the collection locations of the truck with number plate "AUS 119X"
+A plot showing the collection locations of the truck with number plate "UAS 119X"
 ```{r}
 library(fslogisticskampala)
 library(ggplot2)
 library(lubridate)
 
-aus <- trips |>
-  dplyr::filter(numberplate == "AUS 119X") |>
+uas <- trips |>
+  dplyr::filter(numberplate == "UAS 119X") |>
   dplyr::filter(date < ymd("2015-04-06"))
 
-ggplot(aus, aes(x = lon, y = lat, color = date)) +
+ggplot(uas, aes(x = lon, y = lat, color = date)) +
   geom_point() +
   labs(title = "GPS Locations of Faecal Sludge Trucks",
        x = "Longitude",
