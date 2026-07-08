@@ -25,8 +25,10 @@ Suggests:
     rmarkdown,
     leaflet,
     ggplot2,
-    lubridate
+    lubridate,
+    testthat (>= 3.2.0)
 VignetteBuilder: knitr
+Config/testthat/edition: 3
 Config/Needs/website: rmarkdown, leaflet, htmlwidgets, webshot2
 Date: 2026-07-08
 URL: https://github.com/openwashdata/fslogisticskampala
