@@ -11,7 +11,7 @@ trucks
 
 ## Format
 
-A tibble with 35 rows and 2 variables
+A tibble with 33 rows and 2 variables
 
 - numberplate:
 

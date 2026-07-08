@@ -64,15 +64,15 @@ trips |>
 
 | fid | numberplate |       date |   time   |      lat |      lon | plant    |
 |----:|:------------|-----------:|:--------:|---------:|---------:|:---------|
-| 117 | AUS 119X    | 2015-03-30 | 10:53:03 | 0.358437 | 32.55036 | Bugolobi |
-| 118 | AUS 119X    | 2015-03-31 | 03:53:41 | 0.348626 | 32.57229 | Bugolobi |
-| 119 | AUS 119X    | 2015-03-31 | 10:33:01 | 0.322447 | 32.56255 | Bugolobi |
+| 117 | UAS 119X    | 2015-03-30 | 10:53:03 | 0.358437 | 32.55036 | Bugolobi |
+| 118 | UAS 119X    | 2015-03-31 | 03:53:41 | 0.348626 | 32.57229 | Bugolobi |
+| 119 | UAS 119X    | 2015-03-31 | 10:33:01 | 0.322447 | 32.56255 | Bugolobi |
 
 For an overview of the variable names, see the following table.
 
 | variable_name | variable_type | description |
 |:---|:---|:---|
-| fid | numeric | Running ID for each recorded GPS location of a truck. |
+| fid | integer | Running ID for each recorded GPS location of a truck. |
 | numberplate | character | Numberplate of the truck, can be joined with `trucks` resource. |
 | date | Date | Date of the record in ISO 8601 format. |
 | time | c(“hms”, “difftime”) | Time of the record in hours, minutes, seconds. |
@@ -83,7 +83,7 @@ For an overview of the variable names, see the following table.
 ### trucks
 
 The dataset `trucks` contains data about additional information on the
-volume of each truck used in the dataset `trips`. It has 35 observations
+volume of each truck used in the dataset `trips`. It has 33 observations
 and 2 variables
 
 ``` r
@@ -96,9 +96,9 @@ trucks |>
 
 | numberplate | volume |
 |:------------|-------:|
-| AUS 119X    |      3 |
-| UAG 448X    |     35 |
-| UAN 030N    |      3 |
+| UAS 119X    |    3.0 |
+| UAG 448X    |    3.5 |
+| UAN 030N    |    3.0 |
 
 For an overview of the variable names, see the following table.
 
@@ -110,7 +110,7 @@ For an overview of the variable names, see the following table.
 ## Example 1
 
 A plot showing the collection locations of the truck with number plate
-“AUS 119X”
+“UAS 119X”
 
 ``` r
 
@@ -118,11 +118,11 @@ library(fslogisticskampala)
 library(ggplot2)
 library(lubridate)
 
-aus <- trips |>
-  dplyr::filter(numberplate == "AUS 119X") |>
+uas <- trips |>
+  dplyr::filter(numberplate == "UAS 119X") |>
   dplyr::filter(date < ymd("2015-04-06"))
 
-ggplot(aus, aes(x = lon, y = lat, color = date)) +
+ggplot(uas, aes(x = lon, y = lat, color = date)) +
   geom_point() +
   labs(title = "GPS Locations of Faecal Sludge Trucks",
        x = "Longitude",
