@@ -17,4 +17,11 @@ trucks
 \description{
 Additional information on the volume of each truck used in the dataset \code{trips}.
 }
+\examples{
+head(trucks)
+
+# Join truck volumes onto the trips they made
+merge(trips, trucks, by = "numberplate") |>
+  head()
+}
 \keyword{datasets}
