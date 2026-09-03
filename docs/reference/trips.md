@@ -50,13 +50,13 @@ A tibble with 5653 rows and 7 variables
 head(trips)
 #> # A tibble: 6 × 7
 #>     fid numberplate date       time       lat   lon plant   
-#>   <int> <chr>       <date>     <time>   <dbl> <dbl> <chr>   
-#> 1   117 UAS 119X    2015-03-30 10:53:03 0.358  32.6 Bugolobi
-#> 2   118 UAS 119X    2015-03-31 03:53:41 0.349  32.6 Bugolobi
-#> 3   119 UAS 119X    2015-03-31 10:33:01 0.322  32.6 Bugolobi
-#> 4   120 UAS 119X    2015-03-31 11:42:01 0.364  32.5 Bugolobi
-#> 5   121 UAS 119X    2015-04-01 07:03:01 0.360  32.6 Bugolobi
-#> 6   122 UAS 119X    2015-04-01 09:14:21 0.312  32.6 Bugolobi
+#>   <dbl> <chr>       <date>     <time>   <dbl> <dbl> <chr>   
+#> 1   117 AUS 119X    2015-03-30 10:53:03 0.358  32.6 Bugolobi
+#> 2   118 AUS 119X    2015-03-31 03:53:41 0.349  32.6 Bugolobi
+#> 3   119 AUS 119X    2015-03-31 10:33:01 0.322  32.6 Bugolobi
+#> 4   120 AUS 119X    2015-03-31 11:42:01 0.364  32.5 Bugolobi
+#> 5   121 AUS 119X    2015-04-01 07:03:01 0.360  32.6 Bugolobi
+#> 6   122 AUS 119X    2015-04-01 09:14:21 0.312  32.6 Bugolobi
 
 # Number of recorded trips per treatment plant
 table(trips$plant)
