@@ -27,9 +27,9 @@ start; the version above pins the standard for the whole review.
 - Missing values are coded as `NA`, never as empty strings, “NULL”,
   “N/A”, or sentinel numbers such as -99.
 - After editing DESCRIPTION, run
-  [`washr::update_description()`](https://openwashdata-dev.github.io/washr/reference/update_description.html).
+  [`washr::update_description()`](https://openwashdata.github.io/washr/reference/update_description.html).
   After version or author changes, run
-  [`washr::update_citation()`](https://openwashdata-dev.github.io/washr/reference/update_citation.html)
+  [`washr::update_citation()`](https://openwashdata.github.io/washr/reference/update_citation.html)
   so DESCRIPTION, CITATION.cff, and inst/CITATION stay in sync.
 - Raw data stays in `data-raw/`, processed `.rda` data in `data/`, and
   CSV/XLSX exports in `inst/extdata/`. `data-raw/dictionary.csv`
