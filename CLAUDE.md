@@ -58,10 +58,11 @@ package-name/
 
 ## Standard _pkgdown.yml
 
-Replace `packagename` with the actual package name.
+Replace `packagename` with the actual package name. `url` is the site base
+URL, so it is the Pages URL; the repo link lives in `home.links`.
 
 ```yaml
-url: https://github.com/openwashdata/packagename
+url: https://openwashdata.github.io/packagename/
 template:
   bootstrap: 5
   includes:
