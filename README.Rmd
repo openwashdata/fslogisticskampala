@@ -32,6 +32,8 @@ knitr::opts_chunk$set(
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21260446.svg)](https://zenodo.org/doi/10.5281/zenodo.21260446)
 <!-- badges: end -->
 
+A data package published by [openwashdata](https://openwashdata.org).
+
 The goal of fslogisticskampala is to provide data on faecal sludge
 transporting logistics in Kampala, Uganda. The package contains two datasets:
 `trips` records the GPS locations of emptying trucks collecting sludge from
