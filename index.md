@@ -1,7 +1,5 @@
 # fslogisticskampala
 
-A data package published by [openwashdata](https://openwashdata.org).
-
 The goal of fslogisticskampala is to provide data on faecal sludge
 transporting logistics in Kampala, Uganda. The package contains two
 datasets: `trips` records the GPS locations of emptying trucks
@@ -185,6 +183,8 @@ Data are available as
 [CC-BY](https://github.com/openwashdata/fslogisticskampala/blob/main/LICENSE.md).
 
 ## Citation
+
+Published by openwashdata, <https://openwashdata.org>.
 
 Please cite this package using:
 
